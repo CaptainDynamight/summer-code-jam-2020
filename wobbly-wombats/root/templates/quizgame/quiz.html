@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{%load static %}
+
+{% block header %}
+    <title>EarlyWeb Quiz</title>
+    <link rel="stylesheet" href="{% static 'quizgame/css/quiz.css' %}">
+{% endblock header %}
+
+{% block body %}
+    <div id="quiz">
+        <h1>Timer: [[timeLeft]]</h1>
+        <section id="stats">
+            <h3>Correct: [[correct]]</h3>
+            <h3>Incorrect: [[incorrect]]</h3>
+        </section>
+        {% for site in generated_sites %}
+            <iframe src="{{site}}" title="W3Schools Free Online Web Tutorials" v-if="round == {{forloop.counter}}"></iframe>
+        {% endfor %}
+        <button @click="endQuiz()">Exit</button>
+        <button @click="later()">Later</button>
+        <button @click="round+=1">Done</button>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="{% static 'quizgame/js/quiz.js' %}"></script>
+    </div>
+{% endblock body %}
