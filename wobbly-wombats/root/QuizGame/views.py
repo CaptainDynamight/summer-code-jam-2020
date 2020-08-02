@@ -5,7 +5,7 @@ import random
 
 
 def gen_site_url():
-    """Returns the url of the first page from the specified day"""
+    """Returns a dict of url of a page at random interval and the year it was developed"""
 
     with open('data/popular_sites.json') as f:
         popular_sites = json.load(f)
