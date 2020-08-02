@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import SiteModel
 
-# Register your models here.
+@admin.register(SiteModel)
+class SiteAdmin(admin.ModelAdmin):
+    fields = ('site', 'date')
