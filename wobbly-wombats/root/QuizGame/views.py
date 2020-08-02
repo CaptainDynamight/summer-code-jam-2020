@@ -1,13 +1,22 @@
 from django.shortcuts import render
 import requests
+import json
+import random
 
-# Create your views here.
+
+def gen_site_url():
+    """Returns a dict of url of a page at random interval and the year it was developed"""
+
+    with open('data/popular_sites.json') as f:
+        popular_sites = json.load(f)
+
+    random_key = random.choice(list(popular_sites.keys()))
+    site = popular_sites[random_key][0]
+    year = str(random.randint(popular_sites[random_key][1], 2012))
+    date = year + str(random.randint(1, 12)) + str(random.randint(1, 30))
+    snapshot = random.randint(100000, 999999)
+    return {"url": f'https://web.archive.org/web/{date}{snapshot}/{site}',
+            "solution": year}
 
 
-def grab_site_url(site, date):
-    """Returns the url of the first page from the specified day"""
-    r = requests.get(f'https://web.archive.org/__wb/calendarcaptures/2?url={site}&date={date}')
-    # TODO: handle if there is no sites
-    snapshots = r.json()['items']
-    site_info = snapshots[0]
-    return f'https://web.archive.org/web/{date}{site_info[0]}/{site}'
+print(gen_site_url())

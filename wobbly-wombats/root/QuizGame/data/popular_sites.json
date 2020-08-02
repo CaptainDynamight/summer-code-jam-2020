@@ -1,0 +1,18 @@
+{
+  "google": ["http://www.google.com/", 1996],
+  "facebook": ["http://www.facebook.com/", 2005],
+  "myspace": ["https://myspace.com/", 2003],
+  "yahoo": ["http://www.yahoo.com/", 1996],
+  "youtube": ["https://www.youtube.com/", 2005],
+  "wikipedia": ["http://en.wikipedia.org/", 2002],
+  "msn": ["https://www.msn.com/", 1996],
+  "apple": ["http://www.apple.com/", 1997],
+  "tumblr": ["https://www.tumblr.com/", 2007],
+  "twitter": ["https://twitter.com/", 2006],
+  "ebay": ["http://www.ebay.com/", 1999],
+  "linkedin": ["https://www.linkedin.com/", 2003],
+  "flickr": ["https://www.flickr.com/", 2004],
+  "blogger": ["https://www.blogger.com/", 1999],
+  "amazon": ["http://www.amazon.com/", 1999],
+  "dell": ["http://dell.com/", 1996]
+}
