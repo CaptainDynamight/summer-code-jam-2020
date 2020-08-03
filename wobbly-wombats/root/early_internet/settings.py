@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '-+=qjf2@ss7c-$^5(6lwq@+q*_r1xzeb+u%chy)c332t76^^ms')
 
 DEBUG = os.environ.get('DEBUG', True)
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 ALLOWED_HOSTS = ['*']
 
