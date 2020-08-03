@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
-
-from .service import gen_site_url, gen_adjective
+# from .service import gen_site_url, gen_adjective
 
 
 User = get_user_model()
@@ -12,6 +11,9 @@ class PopularSite(models.Model):
     name = models.CharField(max_length=20)
     url = models.URLField()
     release_year = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.name}"
 
 
 class Site(models.Model):
@@ -25,12 +27,12 @@ class Site(models.Model):
         related_name='sites'
     )
 
-    def save(self, *args, **kwargs):
-        if not self.url:
-            generated_url = gen_site_url()
-            self.url = generated_url['url']
-            self.year = generated_url['year']
-        return super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.url:
+    #         generated_url = gen_site_url()
+    #         self.url = generated_url['url']
+    #         self.year = generated_url['year']
+    #     return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.url.split('/')[-1]} from {self.year}"
@@ -59,12 +61,12 @@ class Quiz(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        if not self.title:
-            adjective = gen_adjective()
-            self.title = f'{adjective.capitalize()} quiz!'
-
-        if not self.slug:
-            self.slug = slugify(self.title)
-
-        return super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.title:
+    #         adjective = gen_adjective()
+    #         self.title = f'{adjective.capitalize()} quiz!'
+    #
+    #     if not self.slug:
+    #         self.slug = slugify(self.title)
+    #
+    #     return super().save(*args, **kwargs)
