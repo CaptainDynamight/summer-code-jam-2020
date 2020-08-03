@@ -1,20 +1,16 @@
-import json
 import random
 from .data import adjectives
+from .models import PopularSite
 
 
 def gen_site_url():
     """Returns a dict of url of a page at random interval and the year it was developed"""
-
-    with open('data/popular_sites.json') as f:
-        popular_sites = json.load(f)
-
-    random_key = random.choice(list(popular_sites.keys()))
-    site = popular_sites[random_key][0]
-    year = str(random.randint(popular_sites[random_key][1], 2012))
-    date = year + str(random.randint(1, 12)) + str(random.randint(1, 30))
+    random_key = random.choice(PopularSite.objects.values_list('id', flat=True))
+    site = PopularSite.objects.get(id=random_key)
+    year = str(random.randint(site.year, 2012))
+    date = year + str(random.randint(1, 12)) + str(random.randint(1, 28))
     snapshot = random.randint(100000, 999999)
-    return {"url": f'https://web.archive.org/web/{date}{snapshot}/{site}',
+    return {"url": f'https://web.archive.org/web/{date}{snapshot}/{site.url}',
             "year": year}
 
 
