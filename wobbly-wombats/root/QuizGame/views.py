@@ -1,13 +1,10 @@
-from django.shortcuts import render
-import requests
 import json
 import random
 
 
 def gen_site_url():
     """Returns a dict of url of a page at random interval and the year it was developed"""
-
-    with open('data/popular_sites.json') as f:
+    with open('QuizGame/data/popular_sites.json') as f:
         popular_sites = json.load(f)
 
     random_key = random.choice(list(popular_sites.keys()))
@@ -17,6 +14,3 @@ def gen_site_url():
     snapshot = random.randint(100000, 999999)
     return {"url": f'https://web.archive.org/web/{date}{snapshot}/{site}',
             "solution": year}
-
-
-print(gen_site_url())
